@@ -1,9 +1,10 @@
 // interaction with DB
 // remembering all the images
-// setting the properties of each image and the html we want to put on the DOM for each item
+// setting the properties of each image and the html we want to put on    the DOM for each item
 // attach event listeners particular to each Image
 
 class Image {
+  
   static all = [];
 
   constructor({ url, description }) {
@@ -13,9 +14,8 @@ class Image {
 
     // setup the html element that will contain the image
     this.element = document.createElement("li");
-    this.element.dataset["id"] = image.id;
-    this.element.id = `image-${image.id}
-    `;
+    this.element.dataset["id"] = id;
+    this.element.id = `image-${id}`;
     //remember all items
     Image.all.push(this);
   }
@@ -23,10 +23,16 @@ class Image {
   render() {
     this.element.innerHTML = `
       <div data-id="${id}">
-        <span class="url">${this.url}</span>
-        <span class="description">${this.description}></span>
+        <span class="url">${this.attributes.url}</span>
+        <span class="description">${this.attributes.description}></span>
       </div>
         <button class="delete" data-id="${id}">Delete</button>`;
-       
+
+    return this.element;
   }
+
+  attachToDom(){
+    list.appendChild(this.render())
+  }
+
 }

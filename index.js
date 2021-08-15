@@ -1,12 +1,6 @@
 // will trigger the code from our classes, etc. 
 
-document.addEventListener("DOMContentLoaded", (event) => {
+const form = document.getElementById('image-form')
+const urlInput = document.getElementById('image-url')
+const descInput = document.getElementById('image-desc')
 
-  // fetch("http://localhost:3000/images")   
-  //   .then((response) => response.json())
-  //   .then((data) => displayImages(data));
-
-  // function displayImages(images) {
-  //   console.log(images);
-  // }
-});

@@ -1,9 +1,14 @@
 // handle all fetch requests for the Images
+function getImages() {
+  fetch("http://localhost:3000/images")
+    .then(r => r.json())
+    .then(renderImages);
 
-fetch("http://localhost:3000/images")
-  .then((response) => response.json())
-  .then((data) => displayImages(data));
-
-function displayImages(images) {
-  console.log(images);
+  function renderImages(arg) {
+    const images = arg["data"]
+    images.forEach(element => {
+      new Image(element)
+      renderItem(element)
+    })
+  }
 }
