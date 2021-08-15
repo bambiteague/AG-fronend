@@ -1,1 +1,1 @@
-// fetch requests for images
+// handle all fetch requests for the Images
