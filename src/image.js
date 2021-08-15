@@ -13,10 +13,13 @@ class Image {
     this.description = description;
 
     // setup the html element that will contain the image
-    this.element = document.createElement("li");
-    this.element.dataset["id"] = id;
-    this.element.id = `image-${id}`;
-    //remember all items
+    this.element = document.createElement("img");
+    img.src = `'${this.attributes.url}'`;
+                document.getElementById('body').appendChild(img);
+                down.innerHTML = "Image Element Added.";
+    // this.element.dataset["id"] = id;
+    // this.element.id = `image-${id}`;
+    // //remember all items
     Image.all.push(this);
   }
 

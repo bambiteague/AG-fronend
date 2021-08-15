@@ -1,20 +1,25 @@
 // handle all fetch requests for the Images
 
-class imageApi {
+class ImageApi {
   constructor(port) {
-    this.baseUrl = `${port}/items`;
+    this.baseUrl = `${port}/images`;
   }
 
   getImages() {
     fetch(this.baseUrl)
       .then((r) => r.json())
-      .then((json) => {
-        json["data"].forEach((element) => {
-          const i = new Image({ id: element.id, ...element.attributes });
-          i.attachToDom();
+      .then((image) => {
+        image.map((i) => {
+          return i;
         });
       });
   }
+
+  // renderImages(image) {
+  //   image.map((i) => {
+  //     return i;
+  //   });
+  // }
 
   createImage() {
     const imageInfo = {
