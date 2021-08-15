@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-  // fetch("http://localhost:3000/users")   
-  //   .then((response) => response.json())
-  //   .then((data) => displayUsers(data));
+  fetch("http://localhost:3000/images")   
+    .then((response) => response.json())
+    .then((data) => displayImages(data));
 
-  // function displayUsers(users) {
-  //   console.log(users);
-  // }
+  function displayImages(images) {
+    console.log(images);
+  }
 });
