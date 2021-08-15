@@ -4,8 +4,8 @@
 // attach event listeners particular to each Image
 
 class Image {
-  
   static all = [];
+  static containter = document.getElementById("image-list");
 
   constructor({ url, description }) {
     //setting the properties of each image
@@ -23,7 +23,7 @@ class Image {
   render() {
     this.element.innerHTML = `
       <div data-id="${id}">
-        <span class="url">${this.attributes.url}</span>
+        <span class="url"><img src="${this.attributes.url}"></span><br>
         <span class="description">${this.attributes.description}></span>
       </div>
         <button class="delete" data-id="${id}">Delete</button>`;
@@ -31,8 +31,8 @@ class Image {
     return this.element;
   }
 
-  attachToDom(){
-    list.appendChild(this.render())
+  attachToDom() {
+    this.render();
+    Image.container.appendChild(this.element);
   }
-
 }
