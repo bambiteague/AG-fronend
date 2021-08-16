@@ -1,9 +1,16 @@
 // will trigger the code from our classes, etc.
-  const port = "http://localhost:3000";
-  const imageApi = new ImageApi(port)
-  const container = document.getElementById("image-container");
+
+  const api = new ImageApi
   const form = document.getElementById("image-form");
   const urlInput = document.getElementById("image-url");
   const descInput = document.getElementById("image-desc");
 
-  imageApi.getImages()
+  form.addEventListener('submit', handleSubmit)
+
+  function handleSubmit(e){
+     e.preventDefault()
+     api.createImage()
+     e.target.reset()
+  }
+
+ api.getImages()

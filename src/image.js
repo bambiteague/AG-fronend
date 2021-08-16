@@ -5,21 +5,15 @@
 
 class Image {
   static all = [];
-  static containter = document.getElementById("image-container");
+  static container = document.getElementById("image-container");
 
   constructor({ url, description }) {
     //setting the properties of each image
     this.url = url;
     this.description = description;
-
-    // setup the html element that will contain the image
     this.element = document.createElement("img");
-    img.src = `'${this.attributes.url}'`;
-                document.getElementById('body').appendChild(img);
-                down.innerHTML = "Image Element Added.";
-    // this.element.dataset["id"] = id;
-    // this.element.id = `image-${id}`;
-    // //remember all items
+    document.getElementById("body").appendChild(img);
+    down.innerHTML = "Image Element Added.";
     Image.all.push(this);
   }
 
@@ -34,8 +28,17 @@ class Image {
     return this.element;
   }
 
-  attachToDom() {
-    this.render();
-    Image.container.appendChild(this.element);
+  attachToDom(x) {
+    const div = document.getElementById("image-container");
+
+    div.innerHTML = ""; // clear images
+
+    for (counter = 1; counter <= x; counter++) {
+      const image = document.createElement("img");
+      image.src = " " + counter + ".png";
+      div.appendChild(imagem);
+    }
+    //   this.render();
+    //   Image.container.appendChild(this.element);
   }
 }
