@@ -1,17 +1,17 @@
-class ImageApi {
+class PostApi {
   constructor() {
   }
   // fetching and returning json data
   // render the image url into an html element to display on the page
-  getImages() {
+  getPosts() {
     fetch("http://localhost:3000/images") 
       .then( r => r.json() )
       .then( json =>  {
         json.forEach(image => {
-          debugger
-            const i = new Image({url: image.url, description: image.description})
+          // debugger
+            const i = new Post({imageUrl: image.url, description: image.description})
             console.log(i)
-            debugger
+            // debugger
         })
     })
   }
@@ -26,13 +26,13 @@ class ImageApi {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        
         Accept: "application/json",
       },
       body: JSON.stringify(imageinfo)
     };
-  
     // pessimistic rendering
-    fetch(this.baseUrl, configObj)
+    fetch("http://localhost:3000/images", configObj)
       .then((r) => r.json())
       .then((json) => {
         const i = new Image({ url: json.data.url, description: json.data.description});
@@ -49,7 +49,7 @@ class ImageApi {
         Accept: "application/json",
       },
     };
-    fetch(`${this.baseURL}/${id}`, configObj)
+    fetch(`${"http://localhost:3000/image"}/${id}`, configObj)
       .then((r) => r.json())
       .then((json) => alert(json.message));
   };
