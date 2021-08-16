@@ -8,8 +8,10 @@ class ImageApi {
       .then( r => r.json() )
       .then( json =>  {
         json.forEach(image => {
+          debugger
             const i = new Image({url: image.url, description: image.description})
-            i.attachToDom()
+            console.log(i)
+            debugger
         })
     })
   }

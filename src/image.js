@@ -12,7 +12,7 @@ class Image {
     this.url = url;
     this.description = description;
     this.element = document.createElement("img");
-    document.getElementById("body").appendChild(img);
+    document.getElementById("image-container").appendChild(img);
     down.innerHTML = "Image Element Added.";
     Image.all.push(this);
   }
@@ -28,17 +28,12 @@ class Image {
     return this.element;
   }
 
-  attachToDom(x) {
+  attachToDom() {
     const div = document.getElementById("image-container");
 
-    div.innerHTML = ""; // clear images
+    div.innerHTML = "";
 
-    for (counter = 1; counter <= x; counter++) {
-      const image = document.createElement("img");
-      image.src = " " + counter + ".png";
-      div.appendChild(imagem);
-    }
-    //   this.render();
-    //   Image.container.appendChild(this.element);
+    this.render();
+    Image.container.appendChild(this.element);
   }
 }
