@@ -1,41 +1,44 @@
 class PostApi {
-  constructor() {
-  }
+  constructor() {}
   // fetching and returning json data
   // render the image url into an html element to display on the page
   getPosts() {
-    fetch("http://localhost:3000/images") 
-      .then( r => r.json() )
-      .then( json =>  {
-        json.forEach(image => {
-          // debugger
-            const i = new Post({imageUrl: image.url, description: image.description})
-            console.log(i)
-            // debugger
-        })
-    })
+    fetch("http://localhost:3000/images")
+      .then((r) => r.json())
+      .then((json) => {
+        json.forEach((postResponse) => {
+          const post = new Post({
+            imageUrl: postResponse.url,
+            description: postResponse.description,
+          });
+          post.attachToDom();
+        });
+      });
   }
   // below 'createImage' is for the submission & creation of new images & attaching them to the DOM
-  createImage() {
+  createPost() {
     const imageInfo = {
       url: urlInput.value,
       description: descInput.value,
     };
-   
+
     const configObj = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        
+
         Accept: "application/json",
       },
-      body: JSON.stringify(imageinfo)
+      body: JSON.stringify(imageinfo),
     };
     // pessimistic rendering
     fetch("http://localhost:3000/images", configObj)
       .then((r) => r.json())
       .then((json) => {
-        const i = new Image({ url: json.data.url, description: json.data.description});
+        const i = new Image({
+          url: json.data.url,
+          description: json.data.description,
+        });
         i.attachToDom();
       });
   }

@@ -10,20 +10,20 @@
   <body>
     <h1>AvianGram</h1>
 
-    <form id="image-form"> <!--maybe change to post-form going forward------>
+    <form id="image-form">
+      <!--maybe change to post-form going forward------>
       <label for="image-url">Image URL:</label>
       <input type="text" name="url" id="image-url" />
       <label for="image-desc">Image description:</label>
       <input type="text" name="description" id="image-desc" />
       <input type="submit" value="Add your image!" />
     </form>
-    
-    <h3>Here's all the images:</h3>
-    <div id="post-grid"></div>
-    
 
-    <script src="./src/image.js" type="text/javascript"></script>
-    <script src="./src/imageAPI.js" type="text/javascript"></script>
+    <h3>Here's all the images:</h3>
+    <div id="post-grid" style="display: flex"></div>
+
+    <script src="./src/post.js" type="text/javascript"></script>
+    <script src="./src/postAPI.js" type="text/javascript"></script>
     <script src="index.js"></script>
     <script src=""></script>
   </body>

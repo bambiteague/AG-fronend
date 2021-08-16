@@ -27,6 +27,6 @@ class Post {
 
   attachToDom() {
     this.render();
-    Post.container.appendChild(this.card);
+    Post.postGrid.appendChild(this.card);
   }
 }

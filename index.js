@@ -1,6 +1,6 @@
 // will trigger the code from our classes, etc.
 document.addEventListener("DOMContentLoaded", () => {
-  const api = new ImageApi();
+  const api = new PostApi();
   const form = document.getElementById("image-form");
   const urlInput = document.getElementById("image-url");
   const descInput = document.getElementById("image-desc");
@@ -13,5 +13,5 @@ document.addEventListener("DOMContentLoaded", () => {
 //     e.target.reset();
 //   }
 
-  api.getImages();
+  api.getPosts();
 });
