@@ -5,7 +5,7 @@
 
 class Image {
   static all = [];
-  static containter = document.getElementById("image-list");
+  static containter = document.getElementById("image-container");
 
   constructor({ url, description }) {
     //setting the properties of each image

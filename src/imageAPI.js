@@ -1,32 +1,28 @@
 // handle all fetch requests for the Images
-
 class ImageApi {
   constructor(port) {
     this.baseUrl = `${port}/images`;
   }
 
+  // fetching and returning json data
+  // render the image url into an html element to display on the page
   getImages() {
     fetch(this.baseUrl)
       .then((r) => r.json())
-      .then((image) => {
-        image.map((i) => {
-          return i;
-        });
-      });
+      .then((images) => images.forEach((image) => renderImage(image.url)));
+  }
+  renderImage(image) {
+    const imageObj = document.querySelector(".image-container");
+    const picture = document.createElement("img");
+    picture.src = image.attributes.url;
   }
 
-  // renderImages(image) {
-  //   image.map((i) => {
-  //     return i;
-  //   });
-  // }
-
+  // below 'createImage' is for the submission & creation of new images & attaching them to the DOM
   createImage() {
     const imageInfo = {
       url: urlInput.value,
       description: descInput.value,
     };
-
     const configObj = {
       method: "POST",
       headers: {
@@ -45,6 +41,7 @@ class ImageApi {
       });
   }
 
+  // the delete function, connect to a button element on the html doc
   deleteItem = (id) => {
     const configObj = {
       method: "DELETE",
