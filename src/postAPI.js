@@ -3,12 +3,12 @@ class PostApi {
   // fetching and returning json data
   // render the image url into an html element to display on the page
   getPosts() {
-    fetch("http://localhost:3000/images")
+    fetch("http://localhost:3000/posts")
       .then((r) => r.json())
       .then((json) => {
         json.forEach((postResponse) => {
           const post = new Post({
-            imageUrl: postResponse.url,
+            imageUrl: postResponse.imageUrl,
             description: postResponse.description,
           });
           post.attachToDom();
