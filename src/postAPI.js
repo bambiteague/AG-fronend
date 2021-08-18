@@ -17,7 +17,7 @@ class PostApi {
   }
   // below 'createImage' is for the submission & creation of new images & attaching them to the DOM
   createPost() {
-    const imageInfo = {
+    const postInfo = {
       url: urlInput.value,
       description: descInput.value,
     };
@@ -32,11 +32,11 @@ class PostApi {
       body: JSON.stringify(imageinfo),
     };
     // pessimistic rendering
-    fetch("http://localhost:3000/images", configObj)
+    fetch("http://localhost:3000/posts", configObj)
       .then((r) => r.json())
       .then((json) => {
         const i = new Image({
-          url: json.data.url,
+          image_url: json.data.image_url,
           description: json.data.description,
         });
         i.attachToDom();
@@ -52,7 +52,7 @@ class PostApi {
         Accept: "application/json",
       },
     };
-    fetch(`${"http://localhost:3000/image"}/${id}`, configObj)
+    fetch(`${"http://localhost:3000/post"}/${id}`, configObj)
       .then((r) => r.json())
       .then((json) => alert(json.message));
   };
