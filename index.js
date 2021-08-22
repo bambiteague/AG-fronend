@@ -1,18 +1,18 @@
 // will trigger the code from our classes, etc.
 // sets up DOMContentLoaded event listener
 document.addEventListener("DOMContentLoaded", () => {
-  const api = new PostApi();
+  const api =  new PostApi
   const form = document.getElementById("post-form");
-  const urlInput = document.getElementById("image-url");
-  const descInput = document.getElementById("post-desc");
+  const postCard = document.getElementById("");
 
-  form.addEventListener("Upload Post", handleSubmit);
+  form.addEventListener("submit", handleSubmit);
 
   function handleSubmit(e) {
     e.preventDefault();
-    api.createImage();
+    api.createPost();
     e.target.reset();
   }
+
 
   api.getPosts();
 });

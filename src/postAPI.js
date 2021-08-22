@@ -16,8 +16,10 @@ class PostApi {
   }
 // having issues getting images to persist to Db and show on DOM
   createPost() {
-    const postInfo = {
-      imageUrl: urlInput.value,   //maybe so mething wrong here?
+    const urlInput = document.getElementById("image-url");
+    const descInput = document.getElementById("post-desc");
+    const postCardInfo = {
+      imageUrl: urlInput.value,   //maybe so mething wrong
       description: descInput.value,
     };
     const configObj = {
@@ -27,7 +29,7 @@ class PostApi {
 
         Accept: "application/json",
       },
-      body: JSON.stringify(postInfo),
+      body: JSON.stringify(postCardInfo),
     };
     // pessimistic rendering example
     fetch("http://localhost:3000/posts", configObj)
@@ -37,12 +39,10 @@ class PostApi {
           imageUrl: json.imageUrl,
           description: json.description,
         });
-        i.attachToDom();
+        i.attachToDom
       });
   }
-
-  // connect to a button element on the html doc
-  // I need to get a delete button connected to each image to delete that image!!
+ 
   deleteItem = (id) => {
     const configObj = {
       method: "DELETE",
