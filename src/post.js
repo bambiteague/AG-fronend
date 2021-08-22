@@ -25,4 +25,19 @@ class Post {
     this.render();
     Post.postGrid.appendChild(this.card);
   }
+
+  deleteCard() {
+    const del = document.createElement('button');
+    del.innerHTML = 'Remove this post?';
+    del.onclick = function() { 
+      deleteButton(this)
+    }; 
+    postGrid.appendChild(del); 
+  }
+  
+  deleteButton(x) {  
+    var parent = document.getElementsByTagName(div)[0];
+    parent.removeChild(x);
+  }
+
 }
