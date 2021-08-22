@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const urlInput = document.getElementById("image-url");
   const descInput = document.getElementById("image-desc");
 
-//   form.addEventListener("submit", handleSubmit);
+  form.addEventListener("submit", handleSubmit);
 
-//   function handleSubmit(e) {
-//     e.preventDefault();
-//     api.createImage();
-//     e.target.reset();
-//   }
+  function handleSubmit(e) {
+    e.preventDefault();
+    api.createImage();
+    e.target.reset();
+  }
 
   api.getPosts();
 });
