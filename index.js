@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const urlInput = document.getElementById("image-url");
   const descInput = document.getElementById("post-desc");
 
-  form.addEventListener("submit", handleSubmit);
+  form.addEventListener("Upload Post", handleSubmit);
 
   function handleSubmit(e) {
     e.preventDefault();
