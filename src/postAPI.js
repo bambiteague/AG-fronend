@@ -14,13 +14,12 @@ class PostApi {
         });
       });
   }
-
+// having issues getting images to persist to Db and show on DOM
   createPost() {
     const postInfo = {
-      imageUrl: urlInput.value,
+      imageUrl: urlInput.value,   //maybe so mething wrong here?
       description: descInput.value,
     };
-
     const configObj = {
       method: "POST",
       headers: {
@@ -28,9 +27,8 @@ class PostApi {
 
         Accept: "application/json",
       },
-      body: JSON.stringify(imageinfo),
+      body: JSON.stringify(postInfo),
     };
-
     // pessimistic rendering example
     fetch("http://localhost:3000/posts", configObj)
       .then((r) => r.json())
