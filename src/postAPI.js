@@ -1,7 +1,6 @@
 class PostApi {
   constructor() {}
-  // fetching and returning json data
-  // render the image url into an html element to display on the page
+
   getPosts() {
     fetch("http://localhost:3000/posts")
       .then((r) => r.json())
@@ -15,10 +14,10 @@ class PostApi {
         });
       });
   }
-  // below 'createImage' is for the submission & creation of new images & attaching them to the DOM
+
   createPost() {
     const postInfo = {
-      url: urlInput.value,
+      imageUrl: urlInput.value,
       description: descInput.value,
     };
 
@@ -31,19 +30,21 @@ class PostApi {
       },
       body: JSON.stringify(imageinfo),
     };
-    // pessimistic rendering
+
+    // pessimistic rendering example
     fetch("http://localhost:3000/posts", configObj)
       .then((r) => r.json())
       .then((json) => {
         const i = new Image({
-          image_url: json.data.image_url,
+          imageUrl: json.data.imageUrl,
           description: json.data.description,
         });
         i.attachToDom();
       });
   }
 
-  // the delete function, connect to a button element on the html doc
+  // connect to a button element on the html doc
+  // I need to get a delete button connected to each image to delete that image!!
   deleteItem = (id) => {
     const configObj = {
       method: "DELETE",
