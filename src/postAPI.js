@@ -36,8 +36,8 @@ class PostApi {
       .then((r) => r.json())
       .then((json) => {
         const i = new Image({
-          imageUrl: json.data.imageUrl,
-          description: json.data.description,
+          imageUrl: json.imageUrl,
+          description: json.description,
         });
         i.attachToDom();
       });
