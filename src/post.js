@@ -49,6 +49,7 @@ class Post {
       },
       body: JSON.stringify(postCardInfo),
     };
+
     // pessimistic rendering example
     fetch(POST_URL, configObj)
       .then((r) => r.json())
@@ -64,7 +65,6 @@ class Post {
   }
 
   static removeFromDom(card) {
-    //getting deleted item to delete off page
     card.remove();
   }
 
@@ -86,7 +86,7 @@ class Post {
     const cardDesc = document.createElement("div");
     cardDesc.innerText = this.description;
     this.card.appendChild(cardDesc);
-    
+
     const deleteBtn = document.createElement("button");
     deleteBtn.innerText = "Delete";
     deleteBtn.addEventListener("click", () => Post.deleteItem(this));
