@@ -1,7 +1,7 @@
 const post = Post;
 class Vote {
   static postById(id) {
-    post.id;
+    const postCard = post.id ;
   }
 
   static upVote() {
@@ -17,9 +17,13 @@ class Vote {
     this.downVote = downVote;
   }
 
-  addUpVote() {}
+  addUpVote() {
+    document.addEventListener("on click", )
+  }
 
-  addDownVote() {}
+  addDownVote() {
+    document.addEventListener("on click", )
+  }
   // a Post has_many Votes
   // create a up arrow/down arrow symbol/button
   // create onclick event listener
