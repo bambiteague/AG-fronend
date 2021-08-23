@@ -1,6 +1,5 @@
 // event listeners/interaction with DB
 const POST_URL = "http://localhost:3000/posts";
-const vote = Vote
 class Post {
   static all = [];
   static postGrid = document.getElementById("post-grid");

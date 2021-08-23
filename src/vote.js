@@ -13,7 +13,3 @@
 
 //   // need to add to each postCard Like I did with the delete button for Posts
 //   // need event listeners
-
-
-}
-
