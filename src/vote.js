@@ -10,7 +10,10 @@ class Vote {
     this.upVote = upVote;
     this.downVote = downVote;
   }
-  // button, class="btn btn-default btn-sm
-  // div id="post-button" < where I stored both buttons
-  // ^ need to add to each postCard
+
+  // need to add to each postCard Like I did with the delete button for Posts
+  // need event listeners
+
+
 }
+
