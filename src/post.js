@@ -86,6 +86,7 @@ class Post {
     const cardDesc = document.createElement("div");
     cardDesc.innerText = this.description;
     this.card.appendChild(cardDesc);
+    
     const deleteBtn = document.createElement("button");
     deleteBtn.innerText = "Delete";
     deleteBtn.addEventListener("click", () => Post.deleteItem(this));
