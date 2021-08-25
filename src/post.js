@@ -84,20 +84,15 @@ class Post {
     cardDesc.innerText = this.description;
     this.card.appendChild(cardDesc);
 
-    // const commentArea = document.createElement("form")
-    // commentArea.innerHTML = `
-    //     <div id="container">
-    //       <label for="newComment" name="newComment">Add your comment:</label><br>
-    //       <textarea id="newComment"></textarea><br>
-    //       <button id="addComments">Add Comment</button>
-    //       <div id="allComments"></div>
-    //     </div>
-    //   `
-
     const deleteBtn = document.createElement("button");
     deleteBtn.innerText = "Delete";
     deleteBtn.addEventListener("click", () => Post.deleteItem(this));
     this.card.appendChild(deleteBtn);
+
+    // I want to render my comment form here
+    const commentForm = document.getElementById("comment-form");
+    commentForm.addEventListener("click", () => Comment.createComment())
+
 
   }
 
