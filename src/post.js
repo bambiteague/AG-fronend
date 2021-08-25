@@ -71,6 +71,7 @@ class Post {
     this.description = description;
     this.id = id;
     this.card = document.createElement("div");
+    
     Post.all.push(this);
   }
 
@@ -83,11 +84,6 @@ class Post {
     cardDesc.innerText = this.description;
     this.card.appendChild(cardDesc);
 
-    const deleteBtn = document.createElement("button");
-    deleteBtn.innerText = "Delete";
-    deleteBtn.addEventListener("click", () => Post.deleteItem(this));
-    this.card.appendChild(deleteBtn);
-
     // const commentArea = document.createElement("form")
     // commentArea.innerHTML = `
     //     <div id="container">
@@ -97,6 +93,12 @@ class Post {
     //       <div id="allComments"></div>
     //     </div>
     //   `
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "Delete";
+    deleteBtn.addEventListener("click", () => Post.deleteItem(this));
+    this.card.appendChild(deleteBtn);
+
   }
 
   attachToDom() {
