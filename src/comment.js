@@ -10,31 +10,30 @@ class Comment {
     Comment.all.push(this);
   }
 
-  static createComment(data) {
-    const form = document.getElementByTag("form");
-    const commentInfo = {
-      content: data.value,
-    };
-    const configObj = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+  // static createComment(data) {
+  //   const form = document.getElementByTag("form");
+  //   const commentInfo = {
+  //     content: data.value,
+  //   };
+  //   const configObj = {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
 
-        Accept: "application/json",
-      },
-      body: JSON.stringify(commentInfo),
-    };
+  //       Accept: "application/json",
+  //     },
+  //     body: JSON.stringify(commentInfo),
+  //   };
 
-    fetch(POST_URL, configObj)
-      .then((r) => r.json())
-      .then((json) => {
-        json.forEach((data) => {
-        const c = new Comment({
-          content: json.commentInfo,
-        });
-        // c.attachToDom();
-      });
-    
-    });
-  }
+  //   fetch(POST_URL, configObj)
+  //     .then((r) => r.json())
+  //     .then((json) => {
+  //       json.forEach((data) => {
+  //       const c = new Comment({
+  //         content: json.commentInfo,
+  //       });
+  //       // c.attachToDom();
+  //     });
+  //   });
+  // }
 }

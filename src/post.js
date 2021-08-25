@@ -66,18 +66,13 @@ class Post {
     card.remove();
   }
 
-  constructor({ imageUrl, description, id, commentArea }) {
+  constructor({ imageUrl, description, id }) {
     this.imageUrl = imageUrl;
     this.description = description;
     this.id = id;
-    this.commentArea = commentArea
     this.card = document.createElement("div");
-
     Post.all.push(this);
   }
-
-
-
 
   render() {
     const cardImage = document.createElement("img");
