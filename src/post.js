@@ -1,4 +1,3 @@
-// event listeners/interaction with DB
 const POST_URL = "http://localhost:3000/posts";
 class Post {
   static all = [];
@@ -50,7 +49,6 @@ class Post {
       body: JSON.stringify(postCardInfo),
     };
 
-    // pessimistic rendering example
     fetch(POST_URL, configObj)
       .then((r) => r.json())
       .then((json) => {
@@ -68,15 +66,16 @@ class Post {
     card.remove();
   }
 
-  constructor({ imageUrl, description, id }) {
+  constructor({ imageUrl, description, id, commentArea }) {
     this.imageUrl = imageUrl;
     this.description = description;
     this.id = id;
-
+    this.commentArea = commentArea
     this.card = document.createElement("div");
 
     Post.all.push(this);
   }
+
 
   render() {
     const cardImage = document.createElement("img");
@@ -91,6 +90,17 @@ class Post {
     deleteBtn.innerText = "Delete";
     deleteBtn.addEventListener("click", () => Post.deleteItem(this));
     this.card.appendChild(deleteBtn);
+
+
+    // commentArea.innerHTML = `
+    //     <div id="container">
+    //       <label for="newComment" name="newComment">Add your comment:</label><br>
+    //       <textarea id="newComment"></textarea><br>
+    //       <button id="addComments">Add Comment</button>
+    //       <div id="allComments"></div>
+    //     </div>
+    //   `
+    
   }
 
   attachToDom() {
