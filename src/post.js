@@ -77,6 +77,8 @@ class Post {
   }
 
 
+
+
   render() {
     const cardImage = document.createElement("img");
     cardImage.setAttribute("src", this.imageUrl);
@@ -91,7 +93,7 @@ class Post {
     deleteBtn.addEventListener("click", () => Post.deleteItem(this));
     this.card.appendChild(deleteBtn);
 
-
+    // const commentArea = document.createElement("form")
     // commentArea.innerHTML = `
     //     <div id="container">
     //       <label for="newComment" name="newComment">Add your comment:</label><br>
@@ -100,7 +102,6 @@ class Post {
     //       <div id="allComments"></div>
     //     </div>
     //   `
-    
   }
 
   attachToDom() {
