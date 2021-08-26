@@ -1,26 +1,24 @@
+const COMMENT_URL = "http://localhost:3000/comments";
 class Comment {
   static all = [];
   static postGrid = document.getElementById("post-grid");
 
-  constructor(post_id, content, comment_author) {
+  constructor(post_id, content, post, id) {
     this.post_id = post_id;
     this.content = content;
-    this.comment_author = comment_author;
-
+    this.post = post;
+    this.id = id;
     Comment.all.push(this);
   }
-  // after creating a comment, it needs to be appended to the DOM onto each postCard
-  // need a input area and submit button for the comment form
-  // input area will reset/get wiped after submitting comment
-  // comments will persist (in real time) on each postCard for that specific post using the post_id attribute (posts have_many comments)
 
-  // what I am struggling with most is getting the form to actually show up on the postCard & haven't figured out why I'm struggling. 
-  // I can easily create an HTML form within the post-grid div, but then it's one fo rm at the top instead of a comment form for each "post card"
+  renderComment() {
+    const commentDisplay = document.createTextNode(this.content);
+    this.post.card.appendChild(commentDisplay);
+  }
 
-  static createComment(data) {
-    const form = document.getElementBy("comment-form");
-    const commentInfo = {
-      content: data.value,
+  static createComment(post, comment) {
+    const commentPayload = {
+      comment: { content: comment, post_id: post.id },
     };
     const configObj = {
       method: "POST",
@@ -29,20 +27,15 @@ class Comment {
 
         Accept: "application/json",
       },
-      body: JSON.stringify(commentInfo),
+      body: JSON.stringify(commentPayload),
     };
 
-    fetch(POST_URL, configObj)
+    fetch(COMMENT_URL, configObj)
       .then((r) => r.json())
-      .then((json) => {
-        json.forEach((data) => {
-        const c = new Comment({
-          content: json.commentInfo,
-        });
-        // c.attachToDom();
+      .then((comment) => {
+        const newComment = new Comment(comment.post_id, comment.content, post);
+       
+        newComment.renderComment();
       });
-    });
   }
-
-
 }

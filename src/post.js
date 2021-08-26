@@ -8,15 +8,29 @@ class Post {
       .then((r) => r.json())
       .then((json) => {
         json.forEach((postResponse) => {
+          console.log(`this.comments`, postResponse);
+    
+          // when creating new post i want to pass in the comments
+          // or attach them to the DOM
+
           const post = new Post({
             imageUrl: postResponse.imageUrl,
             description: postResponse.description,
             id: postResponse.id,
+            comments: postResponse.comments
+            //need comments to persist and reload after refresh
+
           });
           post.attachToDom();
         });
       });
   }
+
+  // static getPosts() {
+  //   fetch(POST_URL)
+  //     .then((r) => r.json())
+  //     .then((json) => {})}
+
 
   static deleteItem = (post) => {
     console.log("deleting...");
@@ -66,12 +80,13 @@ class Post {
     card.remove();
   }
 
-  constructor({ imageUrl, description, id }) {
+  constructor({ imageUrl, description, id, comments}) {
     this.imageUrl = imageUrl;
     this.description = description;
     this.id = id;
+    this.comments = comments;
     this.card = document.createElement("div");
-    
+
     Post.all.push(this);
   }
 
@@ -89,16 +104,30 @@ class Post {
     deleteBtn.addEventListener("click", () => Post.deleteItem(this));
     this.card.appendChild(deleteBtn);
 
-    // I want to render my comment form here
-    const commentForm = document.getElementById("comment-form");
-    commentForm.addEventListener("click", () => Comment.createComment())
+    const commentForm = document.createElement("form");
+    commentForm.innerHTML = `
+              <div class="comment-form">
+              <label for="comment-input">Leave A Comment:</label><br>
+              <input type="text" name="comment" />
+              <input type="submit" value="comment now!" method="POST"  />
+              </div>
+           `;
+    this.comments.forEach(comment => {
+      const newComment = new Comment(comment.post_id, comment.content, this, comment.id)
+      newComment.renderComment()
+    })
+    
+    this.card.appendChild(commentForm);
+    commentForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-
+      Comment.createComment(this, e.target[0].value);
+    });
   }
 
   attachToDom() {
     this.render();
-    console.log("Attach: ", this.card);
+    // console.log("Attach: ", this.card);
     Post.postGrid.appendChild(this.card);
   }
 }
