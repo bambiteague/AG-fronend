@@ -34,7 +34,7 @@ class Comment {
       .then((r) => r.json())
       .then((comment) => {
         const newComment = new Comment(comment.post_id, comment.content, post);
-       
+
         newComment.renderComment();
       });
   }

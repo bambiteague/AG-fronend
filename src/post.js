@@ -8,29 +8,16 @@ class Post {
       .then((r) => r.json())
       .then((json) => {
         json.forEach((postResponse) => {
-          console.log(`this.comments`, postResponse);
-    
-          // when creating new post i want to pass in the comments
-          // or attach them to the DOM
-
           const post = new Post({
             imageUrl: postResponse.imageUrl,
             description: postResponse.description,
             id: postResponse.id,
-            comments: postResponse.comments
-            //need comments to persist and reload after refresh
-
+            comments: postResponse.comments,
           });
           post.attachToDom();
         });
       });
   }
-
-  // static getPosts() {
-  //   fetch(POST_URL)
-  //     .then((r) => r.json())
-  //     .then((json) => {})}
-
 
   static deleteItem = (post) => {
     console.log("deleting...");
@@ -80,7 +67,7 @@ class Post {
     card.remove();
   }
 
-  constructor({ imageUrl, description, id, comments}) {
+  constructor({ imageUrl, description, id, comments }) {
     this.imageUrl = imageUrl;
     this.description = description;
     this.id = id;
@@ -112,22 +99,28 @@ class Post {
               <input type="submit" value="comment now!" method="POST"  />
               </div>
            `;
-    this.comments.forEach(comment => {
-      const newComment = new Comment(comment.post_id, comment.content, this, comment.id)
-      newComment.renderComment()
-    })
-    
-    this.card.appendChild(commentForm);
-    commentForm.addEventListener("submit", (e) => {
-      e.preventDefault();
 
-      Comment.createComment(this, e.target[0].value);
+           this.card.appendChild(commentForm);
+           commentForm.addEventListener("submit", (e) => {
+             e.preventDefault();
+             Comment.createComment(this, e.target[0].value);
+             e.target.reset();
+           });
+
+    this.comments.forEach((comment) => {
+      const newComment = new Comment(
+        comment.post_id,
+        comment.content,
+        this,
+        comment.id
+      );
+      newComment.renderComment();
     });
+    
   }
 
   attachToDom() {
     this.render();
-    // console.log("Attach: ", this.card);
     Post.postGrid.appendChild(this.card);
   }
 }
